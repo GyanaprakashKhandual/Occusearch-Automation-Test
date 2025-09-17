@@ -1,0 +1,121 @@
+[
+    {
+        "apiName": "Health Check",
+        "requestUrl": "http://localhost:5000/",
+        "requestMethod": "GET",
+        "statusCode": "200 OK",
+        "totalTestCase": 2,
+        "passedTestCase": 1,
+        "failedTestCase": 1,
+        "bugs": [
+            {
+                "id": "BUG 01",
+                "description": "Call API with an invalid token",
+                "expectedResult": "Status code 401 Unauthorized",
+                "actualResult": "Status code 200 passed",
+                "requirement": "Add authentication token to protect the routes"
+            }
+        ]
+    },
+    {
+        "apiName": "User Registration",
+        "requestUrl": "http://localhost:5000/api/register",
+        "requestMethod": "POST",
+        "statusCode": "201 Created",
+        "totalTestCase": 5,
+        "passedTestCase": 5,
+        "failedTestCase": 0,
+        "bugs": []
+    },
+    {
+        "apiName": "User Login",
+        "requestUrl": "http://localhost:5000/api/login",
+        "requestMethod": "POST",
+        "statusCode": "200 OK",
+        "totalTestCase": 4,
+        "passedTestCase": 3,
+        "failedTestCase": 1,
+        "bugs": [
+            {
+                "id": "BUG 02",
+                "description": "Login with empty password field",
+                "expectedResult": "Status code 400 Bad Request",
+                "actualResult": "Status code 500 Internal Server Error",
+                "requirement": "Add proper validation for empty fields"
+            }
+        ]
+    },
+    {
+        "apiName": "Get User Profile",
+        "requestUrl": "http://localhost:5000/api/profile",
+        "requestMethod": "GET",
+        "statusCode": "200 OK",
+        "totalTestCase": 3,
+        "passedTestCase": 3,
+        "failedTestCase": 0,
+        "bugs": []
+    },
+    {
+        "apiName": "Update Profile",
+        "requestUrl": "http://localhost:5000/api/profile",
+        "requestMethod": "PUT",
+        "statusCode": "200 OK",
+        "totalTestCase": 6,
+        "passedTestCase": 4,
+        "failedTestCase": 2,
+        "bugs": [
+            {
+                "id": "BUG 03",
+                "description": "Update with invalid email format",
+                "expectedResult": "Status code 400 Bad Request with validation error",
+                "actualResult": "Status code 200 OK - invalid email saved",
+                "requirement": "Add email validation before saving"
+            },
+            {
+                "id": "BUG 04",
+                "description": "Update with extremely long username",
+                "expectedResult": "Status code 400 Bad Request",
+                "actualResult": "Status code 500 Internal Server Error",
+                "requirement": "Add length validation for username field"
+            }
+        ]
+    },
+    {
+        "apiName": "Delete User",
+        "requestUrl": "http://localhost:5000/api/user/123",
+        "requestMethod": "DELETE",
+        "statusCode": "204 No Content",
+        "totalTestCase": 3,
+        "passedTestCase": 2,
+        "failedTestCase": 1,
+        "bugs": [
+            {
+                "id": "BUG 05",
+                "description": "Delete non-existent user",
+                "expectedResult": "Status code 404 Not Found",
+                "actualResult": "Status code 200 OK",
+                "requirement": "Return appropriate status code for non-existent resources"
+            }
+        ]
+    },
+    {
+        "apiName": "Get All Posts",
+        "requestUrl": "http://localhost:5000/api/posts",
+        "requestMethod": "GET",
+        "statusCode": "200 OK",
+        "totalTestCase": 4,
+        "passedTestCase": 4,
+        "failedTestCase": 0,
+        "bugs": []
+    },
+    {
+        "apiName": "Create Post",
+        "requestUrl": "http://localhost:5000/api/posts",
+        "requestMethod": "POST",
+        "statusCode": "201 Created",
+        "totalTestCase": 5,
+        "passedTestCase": 5,
+        "failedTestCase": 0,
+        "bugs": []
+    }
+]
