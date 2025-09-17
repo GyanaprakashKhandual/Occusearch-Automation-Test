@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,35 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
+        ::-webkit-scrollbar {
+            width: 5px;
+            overflow: auto;
+        }
+
+        ::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: white;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: grey;
+        }
+
         .dropdown-content {
             display: none;
         }
+
         .dropdown:hover .dropdown-content {
             display: block;
         }
+
         .card-expanded {
             max-height: none !important;
         }
+
         .material-icons {
             font-family: 'Material Icons';
             font-weight: normal;
@@ -36,28 +57,27 @@
         }
     </script>
 </head>
+
 <body class="bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors duration-200">
     <!-- Navbar -->
-    <nav class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 shadow-sm">
+    <nav
+        class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 shadow-sm flex-shrink-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <!-- Logo and Search -->
                 <div class="flex items-center flex-1">
                     <div class="flex-shrink-0 flex items-center">
                         <span class="material-icons text-blue-600 dark:text-blue-400 mr-2">search</span>
-                        <h1 class="text-xl font-bold text-gray-900 dark:text-white">OccSearch</h1>
+                        <h1 class="text-xl font-bold text-gray-900 dark:text-white">Occusearch</h1>
                     </div>
-                    
+
                     <!-- Search Bar -->
                     <div class="ml-8 flex-1 max-w-md">
                         <div class="relative">
-                            <span class="material-icons absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">search</span>
-                            <input 
-                                type="text" 
-                                id="searchInput"
-                                placeholder="Search APIs..." 
-                                class="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-full bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
-                            >
+                            <span
+                                class="material-icons absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">search</span>
+                            <input type="text" id="searchInput" placeholder="Search APIs..."
+                                class="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-full bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400">
                         </div>
                     </div>
                 </div>
@@ -66,67 +86,83 @@
                 <div class="flex items-center space-x-4">
                     <!-- Method Filter -->
                     <div class="relative dropdown">
-                        <button id="methodFilter" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none">
+                        <button id="methodFilter"
+                            class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none">
                             <span class="material-icons text-sm mr-1">tune</span>
                             Method: All
                             <span class="material-icons ml-1">keyboard_arrow_down</span>
                         </button>
-                        <div class="dropdown-content absolute right-0 mt-2 w-48 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-md shadow-lg">
-                            <button class="method-option block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600" data-method="all">All Methods</button>
-                            <button class="method-option block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600" data-method="GET">GET</button>
-                            <button class="method-option block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600" data-method="POST">POST</button>
-                            <button class="method-option block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600" data-method="PUT">PUT</button>
-                            <button class="method-option block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600" data-method="PATCH">PATCH</button>
-                            <button class="method-option block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600" data-method="DELETE">DELETE</button>
+                        <div
+                            class="dropdown-content absolute right-0 mt-2 w-48 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-md shadow-lg">
+                            <button
+                                class="method-option block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                                data-method="all">All Methods</button>
+                            <button
+                                class="method-option block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                                data-method="GET">GET</button>
+                            <button
+                                class="method-option block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                                data-method="POST">POST</button>
+                            <button
+                                class="method-option block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                                data-method="PUT">PUT</button>
+                            <button
+                                class="method-option block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                                data-method="PATCH">PATCH</button>
+                            <button
+                                class="method-option block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                                data-method="DELETE">DELETE</button>
                         </div>
                     </div>
 
                     <!-- Status Filter -->
                     <div class="relative dropdown">
-                        <button id="statusFilter" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none">
+                        <button id="statusFilter"
+                            class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none">
                             <span class="material-icons text-sm mr-1">filter_list</span>
                             Status: All
                             <span class="material-icons ml-1">keyboard_arrow_down</span>
                         </button>
-                        <div class="dropdown-content absolute right-0 mt-2 w-48 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-md shadow-lg">
-                            <button class="status-option block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600" data-status="all">All APIs</button>
-                            <button class="status-option block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600" data-status="passed">All Tests Passed</button>
-                            <button class="status-option block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600" data-status="failed">At Least One Failed</button>
+                        <div
+                            class="dropdown-content absolute right-0 mt-2 w-48 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-md shadow-lg">
+                            <button
+                                class="status-option block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                                data-status="all">All APIs</button>
+                            <button
+                                class="status-option block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                                data-status="passed">All Tests Passed</button>
+                            <button
+                                class="status-option block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                                data-status="failed">At Least One Failed</button>
                         </div>
                     </div>
 
                     <!-- Documentation Button -->
-                    <button class="flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 rounded-md focus:outline-none">
+                    <button
+                        class="flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 rounded-md focus:outline-none">
                         <span class="material-icons text-sm mr-1">description</span>
                         Documentation
                     </button>
 
                     <!-- Theme Toggle -->
-                    <button id="themeToggle" class="p-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 focus:outline-none">
+                    <button id="themeToggle"
+                        class="p-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 focus:outline-none">
                         <span class="material-icons">light_mode</span>
                     </button>
                 </div>
             </div>
         </div>
     </nav>
-
     <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <!-- Results Info -->
-        <div class="flex justify-between items-center mb-6">
-            <div>
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">API Test Results</h2>
-                <p id="resultsInfo" class="text-gray-600 dark:text-gray-400 mt-1">Loading...</p>
-            </div>
-        </div>
-
+    <main class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 h-[calc(100vh-70px)] overflow-y-auto">
         <!-- API Cards Container -->
         <div id="apiCards" class="space-y-4 mb-8">
             <!-- Cards will be populated here -->
         </div>
 
         <!-- Pagination -->
-        <div class="flex items-center justify-between bg-white dark:bg-gray-800 px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg">
+        <div
+            class="flex items-center justify-between bg-white dark:bg-gray-800 px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg">
             <div class="flex items-center text-sm text-gray-700 dark:text-gray-300">
                 <span>Showing</span>
                 <span id="showingFrom" class="mx-1 font-medium">1</span>
@@ -137,14 +173,17 @@
                 <span>results</span>
             </div>
             <div class="flex items-center space-x-2">
-                <button id="prevPage" class="flex items-center px-3 py-1 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 disabled:opacity-50" disabled>
+                <button id="prevPage"
+                    class="flex items-center px-3 py-1 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 disabled:opacity-50"
+                    disabled>
                     <span class="material-icons text-sm">chevron_left</span>
                     Previous
                 </button>
                 <div id="pageNumbers" class="flex space-x-1">
                     <!-- Page numbers will be populated here -->
                 </div>
-                <button id="nextPage" class="flex items-center px-3 py-1 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 disabled:opacity-50">
+                <button id="nextPage"
+                    class="flex items-center px-3 py-1 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 disabled:opacity-50">
                     Next
                     <span class="material-icons text-sm">chevron_right</span>
                 </button>
@@ -152,12 +191,13 @@
         </div>
     </main>
 
+
     <script>
         // Global variables
         let allApis = [];
         let filteredApis = [];
         let currentPage = 1;
-        const itemsPerPage = 6;
+        const itemsPerPage = 3;
         let currentFilters = {
             search: '',
             method: 'all',
@@ -370,11 +410,11 @@
         function applyFilters() {
             filteredApis = allApis.filter(api => {
                 // Search filter
-                const matchesSearch = !currentFilters.search || 
+                const matchesSearch = !currentFilters.search ||
                     api.apiName.toLowerCase().includes(currentFilters.search);
 
                 // Method filter
-                const matchesMethod = currentFilters.method === 'all' || 
+                const matchesMethod = currentFilters.method === 'all' ||
                     api.requestMethod === currentFilters.method;
 
                 // Status filter
@@ -492,7 +532,7 @@
         function toggleCard(index) {
             const details = document.getElementById(`details-${index}`);
             const arrow = document.getElementById(`arrow-${index}`);
-            
+
             if (details.classList.contains('hidden')) {
                 details.classList.remove('hidden');
                 arrow.style.transform = 'rotate(180deg)';
@@ -516,7 +556,7 @@
             // Update showing info
             const startItem = filteredApis.length === 0 ? 0 : (currentPage - 1) * itemsPerPage + 1;
             const endItem = Math.min(currentPage * itemsPerPage, filteredApis.length);
-            
+
             document.getElementById('showingFrom').textContent = startItem;
             document.getElementById('showingTo').textContent = endItem;
 
@@ -524,8 +564,8 @@
             pageNumbers.innerHTML = '';
             for (let i = 1; i <= Math.min(totalPages, 5); i++) {
                 const pageButton = document.createElement('button');
-                pageButton.className = `px-3 py-1 text-sm rounded-md ${i === currentPage ? 
-                    'bg-blue-600 text-white' : 
+                pageButton.className = `px-3 py-1 text-sm rounded-md ${i === currentPage ?
+                    'bg-blue-600 text-white' :
                     'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`;
                 pageButton.textContent = i;
                 pageButton.addEventListener('click', () => {
@@ -542,8 +582,8 @@
             const total = filteredApis.length;
             const passed = filteredApis.filter(api => api.failedTestCase === 0).length;
             const failed = total - passed;
-            
-            document.getElementById('resultsInfo').textContent = 
+
+            document.getElementById('resultsInfo').textContent =
                 `${total} APIs found • ${passed} passing • ${failed} with issues`;
             document.getElementById('totalResults').textContent = total;
         }
@@ -601,4 +641,5 @@
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
+
 </html>
