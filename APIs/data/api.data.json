@@ -1,0 +1,20 @@
+[
+  {
+    "apiName": "Health Check",
+    "requestUrl": "http://localhost:5000/",
+    "requestMethod": "GET",
+    "statusCode": "200 OK",
+    "totalTestCase": 2,
+    "passedTestCase": 1,
+    "failedTestCase": 1,
+    "bugs": [
+      {
+        "id": "BUG 01",
+        "description": "Call API with an invalid token",
+        "expectedResult": "Status code 401 Unauthorized",
+        "actualResult": "Status code 200 passed",
+        "requirement": "Add authentication token to protect the routes"
+      }
+    ]
+  }
+]
